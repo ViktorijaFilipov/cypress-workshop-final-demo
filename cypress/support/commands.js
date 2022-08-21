@@ -24,3 +24,23 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-file-upload';
+
+Cypress.Commands.add('verifyWindowAlertText', (alertText) => {
+    cy.once('window:alert', (str) => {
+      expect(str).to.equal(alertText);
+    });
+  });
+  
+  Cypress.Commands.add('elementVisible', (locator) => {
+    cy.wrap(locator).each((index) => {
+      cy.get(index).then((el) => {
+        cy.get(el).should('be.visible');
+      });
+    });
+  });
+  
+  Cypress.Commands.add('textExists', (text) => {
+    cy.wrap(text).each((index) => {
+      cy.contains(index).should('exist');
+    });
+  });

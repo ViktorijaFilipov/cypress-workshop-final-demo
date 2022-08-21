@@ -1,0 +1,12 @@
+{
+    "collection1": {
+        "Git": "Git Pocket Guide",
+        "DesignPatternsJS": "Learning JavaScript Design Patterns",
+        "API": "Designing Evolvable Web APIs with ASP.NET",
+        "SpeakingJS": "Speaking JavaScript",
+        "Don'tKnowJS": "You Don't Know JS",
+        "JSApps": "Programming JavaScript Applications",
+        "JSSecond": "Eloquent JavaScript, Second Edition",
+        "ECMA": "Understanding ECMAScript 6"
+    }
+}

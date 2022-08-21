@@ -6,5 +6,9 @@
       "userEmail": "specter@example.com",
       "salary": "700000",
       "department": "legal"
+    },
+    "user2": {
+      "username": "repartner",
+      "password": "Test123456!"
     }
 }
