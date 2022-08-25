@@ -1,21 +1,23 @@
 /// <reference types="Cypress" />
 
-import { auth } from '../../support/bookstore_page_objects/auth';
 import { bookActions } from '../../support/bookstore_page_objects/book_store';
 import { navigateTo } from '../../support/bookstore_page_objects/navigation';
 
 describe('Bookstore: Search For Book', () => {
   // Perform login
   beforeEach('Perform login', () => {
-    navigateTo.login();
-    cy.fixture('users').then((users) => {
-      auth.login(users.user2.username, users.user2.password);
-    });
+    cy.createUser();
+    cy.generateToken();
+  });
+
+  // Delete user
+  afterEach('Delete user', () => {
+    cy.deleteUser();
   });
 
   it('Check searching for existing book in book store', () => {
     // Navigate to bookstore
-    navigateTo.bookStoreFromProfile();
+    navigateTo.bookStore();
     // Load books fixture
     cy.fixture('books').then((books) => {
       // Perform book search
@@ -32,7 +34,7 @@ describe('Bookstore: Search For Book', () => {
     // Define invalid book name
     const invalid_book_name = 'Game of Thrones';
     // Navigate to bookstore
-    navigateTo.bookStoreFromProfile();
+    navigateTo.bookStore();
     // Perform book search
     bookActions.searchCollection(invalid_book_name);
     // Assert that there are no search results (no book in the table and table is empty)

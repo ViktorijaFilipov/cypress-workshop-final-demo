@@ -1,16 +1,15 @@
 export class NavigateTo {
-    login() {
-      cy.visit('/login');
-    }
-  
-    profile() {
-      cy.visit('/profile');
-    }
-  
-    bookStoreFromProfile() {
-      cy.get('#gotoStore').click();
-    }
+  login() {
+    cy.visit(Cypress.env('login'));
   }
-  
-  export const navigateTo = new NavigateTo();
-  
+
+  profile() {
+    cy.visit(Cypress.env('profile'));
+  }
+
+  bookStore() {
+    cy.visit(Cypress.env('books'));
+  }
+}
+
+export const navigateTo = new NavigateTo();

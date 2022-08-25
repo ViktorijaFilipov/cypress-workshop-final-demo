@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cypress-cli": "cypress open",
-    "cypress-headed": "cypress run --headed -b chrome",
+    "cypress-cli-prod": "cypress open --env prod=1",
+    "cypress-headed-prod": "cypress run --headed -b chrome --env prod=1",
+    "cypress-headless-prod": "cypress run --headless -b chrome --env prod=1",
+    "cypress-cli-staging": "cypress open",
+    "cypress-headed-staging": "cypress run --headed -b chrome",
+    "cypress-headless-staging": "cypress run --headless -b chrome",
     "eslint": "eslint cypress",
     "eslint-fix": "eslint cypress --fix"
   },

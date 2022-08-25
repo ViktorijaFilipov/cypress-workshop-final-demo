@@ -1,6 +1,5 @@
 /// <reference types="Cypress" />
 
-import { auth } from '../../support/bookstore_page_objects/auth';
 import { bookActions } from '../../support/bookstore_page_objects/book_store';
 import { profileActions } from '../../support/bookstore_page_objects/profile';
 import { navigateTo } from '../../support/bookstore_page_objects/navigation';
@@ -8,27 +7,22 @@ import { navigateTo } from '../../support/bookstore_page_objects/navigation';
 describe('Collections: Delete Book From Collection', () => {
   // Perform login
   beforeEach('Perform login', () => {
-    navigateTo.login();
-    cy.fixture('users').then((users) => {
-      auth.login(users.user2.username, users.user2.password);
-    });
+    cy.createUser();
+    cy.generateToken();
   });
 
   // Add book to collection
   beforeEach('Add book to profile collection', () => {
-    navigateTo.bookStoreFromProfile();
+    navigateTo.bookStore();
     cy.fixture('books').then((books) => {
       bookActions.addBookToCollection(books.collection1.SpeakingJS);
       cy.verifyWindowAlertText(`Book added to your collection.`);
     });
   });
 
-  // Delete the book from collection
-  after('Delete book from profile collection', () => {
-    cy.fixture('books').then((books) => {
-      profileActions.deleteBookFromTable(books.collection1.SpeakingJS, 'ok');
-      cy.verifyWindowAlertText(`Book deleted.`);
-    });
+  // Delete user
+  afterEach('Delete user', () => {
+    cy.deleteUser();
   });
 
   it('Check deleting book from profile collection - confirm deletion', () => {

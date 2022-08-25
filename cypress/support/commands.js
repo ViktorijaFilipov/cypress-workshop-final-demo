@@ -24,23 +24,41 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-file-upload';
+import * as api from './api/auth';
+import * as utils from './utils';
+
+const username = `user${utils.randomFiveNumbers()}`;
+const password = 'Test123456!';
 
 Cypress.Commands.add('verifyWindowAlertText', (alertText) => {
-    cy.once('window:alert', (str) => {
-      expect(str).to.equal(alertText);
+  cy.once('window:alert', (str) => {
+    expect(str).to.equal(alertText);
+  });
+});
+
+Cypress.Commands.add('elementVisible', (locator) => {
+  cy.wrap(locator).each((index) => {
+    cy.get(index).then((el) => {
+      cy.get(el).should('be.visible');
     });
   });
-  
-  Cypress.Commands.add('elementVisible', (locator) => {
-    cy.wrap(locator).each((index) => {
-      cy.get(index).then((el) => {
-        cy.get(el).should('be.visible');
-      });
-    });
+});
+
+Cypress.Commands.add('textExists', (text) => {
+  cy.wrap(text).each((index) => {
+    cy.contains(index).should('exist');
   });
-  
-  Cypress.Commands.add('textExists', (text) => {
-    cy.wrap(text).each((index) => {
-      cy.contains(index).should('exist');
-    });
-  });
+});
+
+Cypress.Commands.add('createUser', () => {
+  api.createUser(username, password);
+});
+
+Cypress.Commands.add('generateToken', () => {
+  api.generateToken(username, password);
+});
+
+Cypress.Commands.add('deleteUser', () => {
+  api.deleteUser(username, password);
+});
+
