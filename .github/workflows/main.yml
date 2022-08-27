@@ -5,8 +5,8 @@ on:
     branches:
       - main
   schedule:
-    # runs tests at 00:00 on Sunday
-    - cron: '0 0 * * sun'
+    # runs tests at 02:00 on Sunday
+    - cron: '0 2 * * sun'
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
