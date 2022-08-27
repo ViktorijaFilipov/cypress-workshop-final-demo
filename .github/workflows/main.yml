@@ -6,7 +6,7 @@ on:
       - main
   schedule:
     # runs tests at 00:00 on Sunday
-    - cron: '0 0 * * 7'
+    - cron: '0 0 * * sun'
 jobs:
   install:
     runs-on: ubuntu-latest
