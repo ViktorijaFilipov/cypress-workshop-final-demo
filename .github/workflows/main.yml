@@ -18,12 +18,6 @@ jobs:
       - name: Install dependencies
         run: npm install    
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v4
-        with:
-          # Disable running of tests within install job
-          runTests: false
-
       - name: 'Run all tests'
         uses: cypress-io/github-action@v4
         with:
@@ -33,8 +27,5 @@ jobs:
           wait-on: 'https://demoqa.com'
           wait-on-timeout: 120
           browser: chrome
-          record: false
-          parallel: false
-          group: All tests
           spec: cypress/e2e/**/*
 
