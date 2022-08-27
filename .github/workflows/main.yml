@@ -8,7 +8,7 @@ on:
     # runs tests at 00:00 on Sunday
     - cron: '0 0 * * sun'
 jobs:
-  install:
+  run tests:
     runs-on: ubuntu-latest
     container: cypress/browsers:node12.18.3-chrome87-ff82
     steps:
