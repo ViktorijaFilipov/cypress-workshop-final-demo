@@ -23,7 +23,6 @@ jobs:
         with:
           # we have already installed all dependencies above
           install: false
-          start: npm run cypress-headless-prod
           wait-on: 'https://demoqa.com'
           wait-on-timeout: 120
           browser: chrome
