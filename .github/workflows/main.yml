@@ -24,28 +24,7 @@ jobs:
           # Disable running of tests within install job
           runTests: false
 
-  ui-chrome-tests:
-    runs-on: ubuntu-latest
-    container: cypress/browsers:node12.18.3-chrome87-ff82
-    needs: install
-    strategy:
-      fail-fast: false
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - uses: actions/cache@v2
-        id: npm-and-build-cache
-        with:
-          path: |
-            ~/.cache/Cypress
-            build
-            node_modules
-          key: ${{ runner.os }}-node_modules-build-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node_modules-build-
-
-      - name: 'All tests'
+      - name: 'Run all tests'
         uses: cypress-io/github-action@v4
         with:
           # we have already installed all dependencies above
