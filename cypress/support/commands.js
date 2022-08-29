@@ -61,4 +61,3 @@ Cypress.Commands.add('generateToken', () => {
 Cypress.Commands.add('deleteUser', () => {
   api.deleteUser(username, password);
 });
-
