@@ -1,6 +1,6 @@
 # cypress-workshop
 
-Cypress Workshop Demo Tests
+Cypress Workshop Tests
 
 Lessons: 
 
