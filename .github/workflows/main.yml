@@ -2,8 +2,8 @@ name: Cypress Tests
 
 on:
   schedule:
-  #schedule at 10:00 on Sunday
-  - cron: '0 10 * * sun'
+  #schedule every hour
+  - cron: '0 * * * *'
   push:
     branches:
       - main
