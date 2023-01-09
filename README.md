@@ -26,5 +26,6 @@ Lessons:
 
 11. Reporting - Qase, Github Actions
 
-
 [Documentation](https://qare.atlassian.net/wiki/spaces/CW/overview)
+
+Please reach out to Viktorija Filipov for any additional information about the course. 
