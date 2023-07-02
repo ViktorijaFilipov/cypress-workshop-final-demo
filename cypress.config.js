@@ -27,7 +27,7 @@ module.exports = defineConfig({
         };
       } else
       return {
-        //Chage these values with values from another environment
+        //Change these values with values from another environment
         baseUrl: "https://demoqa.com",
         env: {
           env: "staging",
